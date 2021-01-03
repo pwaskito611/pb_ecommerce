@@ -18,7 +18,10 @@ class Transactions extends Migration
             $table->string('paypal_order_id');
             $table->integer('total');
             $table->string('status')->default('not done');
-            $table->tinyInteger('quantity');
+            $table->string('contact');
+            $table->string('buyer_id');
+            $table->string('address');
+            $table->timestamp('created_at');
         });
     }
 

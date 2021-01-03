@@ -14,6 +14,7 @@ class UpdateTransactionController extends Controller
 
         $data = Transaction::where('status', 'CREATED')->get();
 
+        //you must get access token for access rest api 
         $accessToken = $this->getAccessToken();
 
         foreach($data as $d) {

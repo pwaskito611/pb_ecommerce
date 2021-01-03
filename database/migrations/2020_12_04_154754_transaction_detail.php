@@ -18,6 +18,7 @@ class TransactionDetail extends Migration
             $table->bigInteger('transaction_id');
             $table->tinyInteger('quantity');
             $table->bigInteger('item_id');
+            $table->string('color');
         });
     }
   

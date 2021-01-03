@@ -20,6 +20,8 @@ class Items extends Migration
             $table->integer('price');
             $table->tinyInteger('on_sell');
             $table->longText('information');
+            $table->string('category');
+            $table->tinyInteger('discount')->nullable();
             $table->timestamps();
         });
     }

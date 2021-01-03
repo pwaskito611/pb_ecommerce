@@ -18,7 +18,7 @@ class UpdateController extends Controller
         $update->update($item);
 
         //update table item color
-            //delete color image item
+            //delete color  item
         ItemColor::where('item_id', $request->id)->delete();
 
             //insert color

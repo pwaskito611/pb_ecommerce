@@ -31,10 +31,8 @@ class RedirectPageController extends Controller
         $result = $this->createOrderPaypal($total);
     
         //link for payment page from request paypal api
-        if(!isset($result->links[1]->href)) {
-     //       abort(500);
-        }
-       $link = $result->links[1]->href;
+       
+        $link = $result->links[1]->href;
 
         //store transacrtion data to databases
         $this->recordTransactions($result, $total, $request['address'], $request['contact']);
@@ -48,6 +46,7 @@ class RedirectPageController extends Controller
 
     public function validation($request) {
         for($i= 0; $i>=0; $i++) {
+        
             if(!isset($request['quantity-'. $i]) && !isset($request['color-'. $i])) {
             break;
             }

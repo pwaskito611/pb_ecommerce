@@ -89,6 +89,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return abort(404);
 })->name('dashboard');
 
+
+//if you cant use storage:link
+/*
 //product image
 Route::get('storage/assets/ItemImage/{filename}', function ($filename)
 {
@@ -124,3 +127,4 @@ Route::get('storage/profile-photos/{filename}', function ($filename)
 
     return $response;
 });
+*/

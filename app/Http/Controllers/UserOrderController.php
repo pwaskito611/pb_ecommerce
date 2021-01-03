@@ -13,11 +13,12 @@ use \Redirect;
 class UserOrderController extends Controller
 {
     public function index () {
-        //get trnasaciton data from data base to check 
+        //get trnasaciton data from database for checking 
         $data = Transaction::where('status', 'CREATED')
         ->where('buyer_id', Auth::user()->id)
         ->get();
 
+        //must get access token before use api
         $accessToken = $this->getAccessToken();
 
         //loop for check and update status of transaction using paypal api
@@ -31,21 +32,17 @@ class UserOrderController extends Controller
             }
 
         }
-        
-        $getTransactionID = Transaction::where('buyer_id', Auth::user()->id)
-        ->where('status', 'COMPLETED')
-        ->select('id')
-        ->get();
-
-        $i = 0; 
-        foreach($getTransactionID as $transaction) {
-            $array[$i] = $transaction->id;
-            $i++;
-        } 
   
-        $items = TransactionDetail::whereIn('transaction_id', $array)
+        $items = TransactionDetail::whereIn('transaction_id', function($query){
+            $query->select('id')
+            ->from('transactions')
+            ->where('status', 'COMPLETED')
+            ->where('buyer_id', Auth::user()->id);
+        })
         ->with(['transaction', 'ItemImage', 'item'])
         ->paginate(12);
+
+
 
         return view('pages.my-order', [
             'items' => $items

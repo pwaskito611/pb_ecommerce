@@ -13,6 +13,10 @@ class StoreImageController extends Controller
 {
     public function index (ItemImageRequest $request) {
 
+        /*
+        *you must make variabel($url) before store to databases
+        */
+
         //store new image to storage
         $path = $request->file('image')->store('/public/assets/ItemImage');
         $path2 = explode('/', $path);
