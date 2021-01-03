@@ -40,7 +40,7 @@ class ItemDetailController extends Controller
 
         }
         
-        return view('pages.itemdetail', [
+        return view('pages.item-detail', [
             'item' => $item,
             'reviews' => $reviews, 
             'chart' => $chart,
