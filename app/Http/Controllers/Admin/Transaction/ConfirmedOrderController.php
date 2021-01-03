@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Transaction;;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
-use App\Models\TransactionDetail;
 
 class ConfirmedOrderController extends Controller
 {
