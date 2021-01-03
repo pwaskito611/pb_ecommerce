@@ -169,7 +169,6 @@
 
 								@if($c->color == 'white') 
 									<li><span class="white"></span></li>
-								}
 								@endif
 
 								@if($c->color == 'black')
