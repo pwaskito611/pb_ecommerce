@@ -307,6 +307,7 @@
 		<div class="container">
 			<h3>New Products</h3>
 			<div class="agileinfo_new_products_grids">
+			<!--variabel for data-target in class  w3_hs_bottom w3_hs_bottom_sub -> ul -> li -> a -->
 			@php($i = 1)
 				@foreach($items as $item)
 				<div class="col-md-3 agileinfo_new_products_grid">
@@ -331,7 +332,7 @@
 							<p><i class="item_price">${{$item->price}}</i></p>
 							@endif
 
-
+							<!--button add / remove chart-->
 							@if(Auth::check() && sizeof($item->chart) > 0)
 
 								@php($limit = sizeof($item->chart))
