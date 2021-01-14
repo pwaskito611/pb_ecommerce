@@ -11,8 +11,8 @@ use \Redirect;
 class DeleteChartController extends Controller
 {
     public function index (Request $request) {
-
-        Chart::where('id', $request->chart_id)
+ 
+        Chart::where('id', $request->item_id)
         ->where('user_id', Auth::user()->id)
         ->delete();
 

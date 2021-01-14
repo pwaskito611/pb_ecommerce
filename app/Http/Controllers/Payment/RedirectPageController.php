@@ -18,6 +18,7 @@ class RedirectPageController extends Controller
     public function index (Request $request) {
         $request = $request->all();
 
+        //validation user input
         $validation = $this->validation($request);
 
         if(!$validation) {
@@ -46,7 +47,7 @@ class RedirectPageController extends Controller
 
     public function validation($request) {
         for($i= 0; $i>=0; $i++) {
-        
+
             if(!isset($request['quantity-'. $i]) && !isset($request['color-'. $i])) {
             break;
             }
