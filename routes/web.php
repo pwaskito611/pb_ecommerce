@@ -128,3 +128,24 @@ Route::get('storage/profile-photos/{filename}', function ($filename)
     return $response;
 });
 */
+
+Route::get('/asd/asd', function() {
+    
+    $arr = ['kasur', 'katak'];
+
+
+    for($i= 0; $i< 1; $i++) {
+        $tmp = "";
+        
+        for($j =0; $j < strlen($arr[$i]); $i++ ) {
+            $tmp .= substr($arr[$i],$j,1);
+        }
+
+        
+    }
+
+    echo $arr[0] ."<br>". $arr[1];
+    
+
+
+});

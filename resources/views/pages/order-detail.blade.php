@@ -8,7 +8,7 @@
         @method('put')
 
         @php($i = 0)
-    
+     
         @foreach($items as $item)  
         <div class="form-group">
             <label for="{{$item->id}}">{{$item->title}} (quantity)</label><br>

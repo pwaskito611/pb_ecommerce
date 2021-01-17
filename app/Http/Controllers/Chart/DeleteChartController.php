@@ -12,7 +12,7 @@ class DeleteChartController extends Controller
 {
     public function index (Request $request) {
  
-        Chart::where('id', $request->item_id)
+        Chart::where('item_id', $request->item_id)
         ->where('user_id', Auth::user()->id)
         ->delete();
 
