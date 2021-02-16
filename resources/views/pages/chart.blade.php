@@ -77,7 +77,7 @@
 									<form action="{{route('delete-chart')}}" method="post">
 									@csrf
 									@method('delete')
-										<input type="hidden" name="chart_id" value="{{$i->chart[0]->id}}">
+										<input type="hidden" name="item_id" value="{{$i->chart[0]->item_id}}">
 										<button type="submit" class="w3ls-cart"style="margin-bottom: 20px!important;">
 											Remove from cart
 										</button>
@@ -138,7 +138,7 @@
 								<form action="{{route('delete-chart')}}" method="post">
 									@csrf
 									@method('delete')
-										<input type="hidden" name="id" value="{{$i->chart[0]->id}}">
+										<input type="hidden" name="item_id" value="{{$i->chart[0]->item_id}}">
 										<button type="submit" class="w3ls-cart">
 											Remove from cart
 										</button>
