@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,35 +15,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])
 ->name('home');
 
-Route::get('/result', [App\Http\Controllers\Result\ResultController::class, 'index'])
+Route::get('/result', [Result\ResultController::class, 'index'])
 ->name('result');
 
-Route::get('/detail', [App\Http\Controllers\ItemDetailController::class, 'index'])
+Route::get('/detail', [ItemDetailController::class, 'index'])
 ->name('item-detail');
-Route::post('/post-review', [App\Http\Controllers\PostReviewController::class, 'index'])
+Route::post('/post-review', [PostReviewController::class, 'index'])
 ->name('post-review');
 
 
 Route::middleware('islogged')->group(function () {
-    Route::get('/chart',[App\Http\Controllers\Chart\ShowChartController::class, 'index'])
+    Route::get('/chart',[Chart\ShowChartController::class, 'index'])
     ->name('show-chart');
-    Route::post('/create-chart',[App\Http\Controllers\Chart\CreateChartController::class, 'index'])
+    Route::post('/create-chart',[Chart\CreateChartController::class, 'index'])
     ->name('create-chart');
-    Route::delete('/delete-chart',[App\Http\Controllers\Chart\DeleteChartController::class, 'index'])
+    Route::delete('/delete-chart',[Chart\DeleteChartController::class, 'index'])
     ->name('delete-chart');
-    Route::delete('/delete-all-chart',[App\Http\Controllers\Chart\DeleteAllChartController::class, 'index'])
+    Route::delete('/delete-all-chart',[Chart\DeleteAllChartController::class, 'index'])
     ->name('delete-all-chart');
 
-    Route::get('/my-order',[App\Http\Controllers\UserOrderController::class, 'index'])
+    Route::get('/my-order',[UserOrderController::class, 'index'])
     ->name('my-order');
 
 
-    Route::get('/order-detail', [App\Http\Controllers\Payment\OrderDetailController::class, 'index'])
+    Route::get('/order-detail', [Payment\OrderDetailController::class, 'index'])
     ->name('order-detail');
-    Route::put('/redirect-page', [App\Http\Controllers\Payment\RedirectPageController::class, 'index'])
+    Route::put('/redirect-page', [Payment\RedirectPageController::class, 'index'])
     ->name('redirect-page');
 
 });
@@ -48,45 +51,45 @@ Route::middleware('islogged')->group(function () {
 Route::middleware('isadmin')->group(function () {    
       Route::prefix('admin')->group(function () {
 
-        Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])
+        Route::get('/dashboard', [Admin\DashboardController::class, 'index'])
         ->name('admin-dashboard');
 
-        Route::get('/item', [App\Http\Controllers\Admin\Item\ShowController::class, 'index'])
+        Route::get('/item', [Admin\Item\ShowController::class, 'index'])
         ->name('show-item');
-        Route::get('/item/create', [App\Http\Controllers\Admin\Item\CreateController::class, 'index'])
+        Route::get('/item/create', [Admin\Item\CreateController::class, 'index'])
         ->name('create-item');
-        Route::post('/item/store', [App\Http\Controllers\Admin\Item\StoreController::class, 'index'])
+        Route::post('/item/store', [Admin\Item\StoreController::class, 'index'])
         ->name('store-item');
-        Route::get('/item/edit', [App\Http\Controllers\Admin\Item\EditController::class, 'index'])
+        Route::get('/item/edit', [Admin\Item\EditController::class, 'index'])
         ->name('edit-item');
-        Route::put('/item/update', [App\Http\Controllers\Admin\Item\UpdateController::class, 'index'])
+        Route::put('/item/update', [Admin\Item\UpdateController::class, 'index'])
         ->name('update-item');
-        Route::delete('/item/delete', [App\Http\Controllers\Admin\Item\DeleteController::class, 'index'])
+        Route::delete('/item/delete', [Admin\Item\DeleteController::class, 'index'])
         ->name('delete-item');
 
-        Route::get('/item/edit/image', [App\Http\Controllers\Admin\Item\EditImageController::class, 'index'])
+        Route::get('/item/edit/image', [Admin\Item\EditImageController::class, 'index'])
         ->name('edit-item-image');
-        Route::post('/item/store/image', [App\Http\Controllers\Admin\Item\StoreImageController::class, 'index'])
+        Route::post('/item/store/image', [Admin\Item\StoreImageController::class, 'index'])
         ->name('store-item-image');
-        Route::delete('/item/delete/image', [App\Http\Controllers\Admin\Item\DeleteImageController::class, 'index'])
+        Route::delete('/item/delete/image', [Admin\Item\DeleteImageController::class, 'index'])
         ->name('delete-item-image');
 
-        Route::get('/transaction/order/all', [App\Http\Controllers\Admin\Transaction\AllOrderController::class, 'index'])
+        Route::get('/transaction/order/all', [Admin\Transaction\AllOrderController::class, 'index'])
         ->name('all-order');
-        Route::get('/transaction/order/confirmed', [App\Http\Controllers\Admin\Transaction\ConfirmedOrderController::class, 'index'])
+        Route::get('/transaction/order/confirmed', [Admin\Transaction\ConfirmedOrderController::class, 'index'])
         ->name('confirmed-order');
-        Route::get('/transaction/order/unconfirmed', [App\Http\Controllers\Admin\Transaction\UnconfirmedOrderController::class, 'index'])
+        Route::get('/transaction/order/unconfirmed', [Admin\Transaction\UnconfirmedOrderController::class, 'index'])
         ->name('unconfirmed-order');
-        Route::put('/transaction/order/confirm', [App\Http\Controllers\Admin\Transaction\ConfirmOrderController::class, 'index'])
+        Route::put('/transaction/order/confirm', [Admin\Transaction\ConfirmOrderController::class, 'index'])
         ->name('confirm-order');
-        Route::put('/transaction/order/update', [App\Http\Controllers\Admin\Transaction\UpdateTransactionController::class, 'index'])
+        Route::put('/transaction/order/update', [Admin\Transaction\UpdateTransactionController::class, 'index'])
         ->name('update-transaction');
     });
 }); 
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return abort(404);
+    return 'Ulalalalalalal';
 })->name('dashboard');
 
 
@@ -128,24 +131,3 @@ Route::get('storage/profile-photos/{filename}', function ($filename)
     return $response;
 });
 */
-
-Route::get('/asd/asd', function() {
-    
-    $arr = ['kasur', 'katak'];
-
-
-    for($i= 0; $i< 1; $i++) {
-        $tmp = "";
-        
-        for($j =0; $j < strlen($arr[$i]); $i++ ) {
-            $tmp .= substr($arr[$i],$j,1);
-        }
-
-        
-    }
-
-    echo $arr[0] ."<br>". $arr[1];
-    
-
-
-});
