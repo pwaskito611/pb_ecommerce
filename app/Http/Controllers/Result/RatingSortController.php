@@ -13,7 +13,7 @@ class RatingSortController extends Controller implements ResultInterface {
 
             $items =  Item::leftJoin('reviews',
             'items.id', '=', 'reviews.item_id')
-            ->whereRaw('title REGEXP "'. $search.'"')
+            ->whereRaw('title REGEXP "'. str_replace('"', '', $search).'"')
             ->where('price', '>=', $priceLowest)
             ->where('on_sell', 1)
             ->where('price', '<=', $priceHighest)

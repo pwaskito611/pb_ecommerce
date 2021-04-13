@@ -10,7 +10,7 @@ class LowToHighSortController extends Controller implements ResultInterface {
     public function getItems($search,  $priceLowest, $priceHighest, $category) {
        if($category === null) {
 
-            $items =  Item::whereRaw('title REGEXP "'. $search.'"')
+            $items =  Item::whereRaw('title REGEXP "'. str_replace('"', '', $search).'"')
             ->where('price', '>=', $priceLowest)
             ->where('price', '<=', $priceHighest) 
             ->with(['itemImage', 'itemColor'])

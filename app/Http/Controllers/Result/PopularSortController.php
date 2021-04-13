@@ -13,7 +13,7 @@ class PopularSortController extends Controller implements ResultInterface {
             
             $items =  Item::leftJoin('transactions',
             'items.id', '=', 'transactions.item_id')
-            ->whereRaw('title REGEXP "'. $search.'"')
+            ->whereRaw('title REGEXP "'. str_replace('"', '', $search).'"')
             ->where('price', '>=', $priceLowest)
             ->where('on_sell', 1)
             ->where('price', '<=', $priceHighest)
